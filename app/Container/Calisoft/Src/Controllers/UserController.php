@@ -47,7 +47,7 @@ class UserController extends Controller
             'role' => $request['role'],
             'password' => bcrypt($request['password']),
         ]);
-        $user->notify(new UsuarioCreado($request->password));
+        
         return $user;
     }
 
