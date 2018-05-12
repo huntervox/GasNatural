@@ -18,15 +18,13 @@ class CreatePreguntasTable extends Migration
             $table->text('pregunta');
             $table->integer('valorPregunta');
             $table->text('respuesta');
+            $table->enum('tipo', ['cuantitativo', 'cualitativo']);
             $table->integer('FK_IndicadorId')->unsigned();
-            $table->integer('FK_TipoPreguntaId')->unsigned();
             $table->timestamps();
 
             $table->foreign('FK_IndicadorId')->references('PK_id')
             ->on('TBL_Indicadores')->onDelete('cascade');
 
-            $table->foreign('FK_TipoPreguntaId')->references('PK_id')
-            ->on('TBL_TipoPregunta')->onDelete('cascade');
         });
     }
 

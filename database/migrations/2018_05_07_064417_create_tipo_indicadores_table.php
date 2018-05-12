@@ -18,6 +18,7 @@ class CreateTipoIndicadoresTable extends Migration
             $table->string('nombreIndicador');
             $table->enum('tipo', ['cuantitativo', 'cualitativo']);
             $table->integer('metaIndicador');
+            $table->timestamps();
 
         });
     }

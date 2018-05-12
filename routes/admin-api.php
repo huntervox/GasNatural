@@ -54,3 +54,15 @@ Route::resource('codificacion', 'ItemsCodificacionController', [
 Route::resource('basedatos', 'BaseDatosController', [
     'only' => ['index', 'store', 'update', 'destroy'],
 ]);
+
+//Crear indicador
+Route::resource('indicadores', 'IndicadorController', [
+    'only' => ['index', 'store', 'update', 'destroy'],
+]);
+Route::resource('preguntas', 'PreguntasController', [
+    'only' => ['index', 'store', 'update', 'destroy','show'],
+]);
+
+
+Route::get('indicadores/{indicador}/planes', 'AdminController@planes')
+    ->name('preguntas.planes');

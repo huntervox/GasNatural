@@ -64,4 +64,9 @@ class User extends Authenticatable
             ->withPivot('tipo')
             ->withTimestamps();
     }
+
+    public function pruebas()
+    {
+        return $this->hasMany(Pruebas::class, 'FK_UsuarioId', 'PK_id');
+    }
 }

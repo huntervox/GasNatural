@@ -6,13 +6,11 @@
 @endcomponent
 
 @component('components.nav-link', [
-    'icon' => 'fa fa-folder-open',
-    'link' => route('proyecto.admin'),
-    'title' => 'Proyectos'
+    'icon' => 'fa fa-area-chart',
+    'link' => route('indicadores'),
+    'title' => 'Indicadores'
 ])
 @endcomponent
-
-
 
 @component('components.nav-link', [
     'icon' => 'fa fa-book',
@@ -21,43 +19,4 @@
 ])
 @endcomponent
 
-@component('components.nav-link', [
-    'icon' => 'fa fa-gears',
-    'title' => 'Semilleros',
-    'link' => route('semilleros')
-])
-@endcomponent
 
-@component('components.nav-dropdown', ['icon' => 'fa fa-percent', 'title' => 'Porcentajes'])
-
-    @component('components.nav-link', [
-        'icon' => 'fa fa-pie-chart',
-        'link' => route('categorias'),
-        'title' => 'Categorias'
-    ])
-    @endcomponent
-
-
-    @component('components.nav-link', [
-        'icon' => 'fa fa-database',
-        'title' => 'Base de Datos',
-        'link' => route('basedatos')
-    ])
-    @endcomponent
-    @component('components.nav-link',[
-        'icon' => 'fa fa-code',
-        'title' => 'Codificación',
-        'link' => route('codificacion')
-    ])
-    @endcomponent
-    
-@endcomponent
-@component('components.nav-dropdown', ['icon'=> 'fa fa-book','title'=>'Estandares'])
-    @component('components.nav-link', ['icon' => 'fa fa-book','link'=>route('estandar-codificacion'),'title' => 'Codificación'])
-    @endcomponent
-    @component('components.nav-link', [
-        'icon' => 'fa fa-database',
-        'link'=>route('estandar-basedatos'),
-        'title' => 'Base de Datos'])
-    @endcomponent
-@endcomponent

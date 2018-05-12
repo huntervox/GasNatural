@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Container\Calisoft\Src\TiposDocumento;
 use App\Container\Calisoft\Src\Categoria;
+use App\Container\Calisoft\Src\Indicadores;
 
 class AdminController extends Controller
 {
@@ -46,5 +47,13 @@ class AdminController extends Controller
     public function  codificacion()
     {
         return view('calisoft.admin.admin-codificacion');
+    }
+    public function  indicadores()
+    {
+        return view('calisoft.admin.admin-indicadores');
+    }
+    public function  planes(Indicadores $indicador)
+    {
+        return view('calisoft.admin.admin-planes', compact('indicador'));
     }
 }
