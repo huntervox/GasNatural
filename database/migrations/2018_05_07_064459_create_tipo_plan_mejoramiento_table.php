@@ -17,6 +17,7 @@ class CreateTipoPlanMejoramientoTable extends Migration
             $table->increments('PK_id');
             $table->text('recomendacion');
             $table->integer('umbral');
+            $table->enum('estado', ['malo', 'regular','excelente']);
             $table->integer('FK_IndicadorId')->unsigned();
             $table->timestamps();
 

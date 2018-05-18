@@ -6,26 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Container\Calisoft\Src\Indicadores;
-use App\Container\Calisoft\Src\Preguntas;
+use App\Container\Calisoft\Src\Planes;
 
-class PreguntasController extends Controller
+class PlanesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Indicadores $indicador)
+    public function index()
     {
-        
-        
-        return $pregunta;
-    }
-
-    public function qShow(Indicadores $indicador)
-    {
-        
-        
+        //
     }
 
     /**
@@ -46,20 +38,9 @@ class PreguntasController extends Controller
      */
     public function store(Request $request)
     {
-        $string = "";
-        for ($i=0; $i < sizeof($request['respuesta']); $i++) {
-            if($i==0){
-                $string = '|'.$string.$request['respuesta'][$i]['respuesta']." = ".$request['respuesta'][$i]['valor']. "|";
-            }else{
-                $string = $string.$request['respuesta'][$i]['respuesta']." = ".$request['respuesta'][$i]['valor']. "|";
-            }
-        }
-        //$request['respuesta'][1]['respuesta'];
-        $pregunta = Preguntas::create([
-            'pregunta' => $request['pregunta'],
-            'valorPregunta' => 5,
-            'respuesta' => $string,
-            'tipo' => 'cuatitativa',
+        $planes = Planes::create([
+            'recomendacion' => $request['recomendacion'],
+            'umbral' => $request['umbral'],
             'FK_IndicadorId' => $request['FK_IndicadorId'],
         ]);
     }
@@ -72,10 +53,8 @@ class PreguntasController extends Controller
      */
     public function show($id)
     {
-
-        $preguntas = Preguntas::all()->where('FK_IndicadorId',$id);
-        
-        return $preguntas;
+        $planes = Planes::all()->where('FK_IndicadorId',$id);
+        return $planes;
     }
 
     /**
@@ -107,8 +86,9 @@ class PreguntasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Preguntas $pregunta)
+    public function destroy($plan)
     {
-        $pregunta->delete();
+        $plan = Planes::all()->where('PK_id',$plan)->first();
+        $plan->delete();
     }
 }

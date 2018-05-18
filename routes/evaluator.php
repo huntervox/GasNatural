@@ -32,3 +32,14 @@ Route::get('pruebasCasoPrueba/{casoPrueba}', 'CasoPruebaController@pruebas');
 Route::get('/proyectos/{proyecto}/sql','EvaluatorController@analizesql')
     ->name('sql');
 
+Route::get('/usuariosRrhh','EvaluatorController@rrhh')
+    ->name('usuariosRrhh');
+
+//LLENAR INDICADOR
+
+Route::get('/usuariosRrhh/{indicador}/{usuario}/diligenciar','EvaluatorController@diligenciar')
+    ->name('diligenciar');
+
+//Lleva a los resultados perritu
+Route::get('/usuariosRrhh/{usuario}/resultados','EvaluatorController@resultados')
+    ->name('resultados');

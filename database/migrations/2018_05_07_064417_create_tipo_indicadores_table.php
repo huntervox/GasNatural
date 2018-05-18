@@ -16,6 +16,7 @@ class CreateTipoIndicadoresTable extends Migration
         Schema::create('TBL_Indicadores', function (Blueprint $table) {
             $table->increments('PK_id');
             $table->string('nombreIndicador');
+            $table->enum('limite', ['mayor', 'menor']);
             $table->enum('tipo', ['cuantitativo', 'cualitativo']);
             $table->integer('metaIndicador');
             $table->timestamps();

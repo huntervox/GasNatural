@@ -63,6 +63,11 @@ Route::resource('preguntas', 'PreguntasController', [
     'only' => ['index', 'store', 'update', 'destroy','show'],
 ]);
 
-
-Route::get('indicadores/{indicador}/planes', 'AdminController@planes')
+// PLANES
+Route::get('indicadores/{indicador}/planes', 'AdminController@planes') 
     ->name('preguntas.planes');
+// Retorna todos los planes
+
+Route::resource('planes', 'PlanesController', [
+    'only' => ['index', 'store', 'update', 'destroy','show'],
+]);

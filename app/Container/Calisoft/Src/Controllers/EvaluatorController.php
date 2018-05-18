@@ -5,6 +5,8 @@ namespace App\Container\Calisoft\Src\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Container\Calisoft\Src\Proyecto;
+use App\Container\Calisoft\Src\Indicadores;
+use App\Container\Calisoft\Src\User;
 use App\Container\Calisoft\Src\NomenclaturaBd;
 use App\Container\Calisoft\Src\Script;
 use App\Container\Calisoft\Src\Documento;
@@ -49,6 +51,25 @@ class EvaluatorController extends Controller
 
         return view('calisoft.evaluator.evaluator-basedatos',compact('proyecto'));
     }
+//RRH
+    public function rrhh(){
+
+        return view('calisoft.evaluator.usuariosRrhh');
+    }
+// LLENAR INDICADOR
+
+    public function diligenciar(Indicadores $indicador,User $usuario){
+
+        return view('calisoft.evaluator.evaluator-diligenciar',compact('indicador','usuario'));
+    }
+
+// lleva a resultados
+
+    public function resultados(User $usuario){
+
+        return view('calisoft.evaluator.evaluator-resultados',compact('usuario'));
+    }
+
 
     public function escenario(Proyecto $proyecto, CasoPrueba $casoPrueba)
     {

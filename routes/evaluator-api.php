@@ -33,3 +33,15 @@ Route::resource('evaluacionSql','NotaFileBDController',[
 // Obtiene la informacion de inicio de prueba
 Route::post('testing', 'TestingController@testing');
 Route::post('testing/save/{caso}', 'TestingController@guardar');
+
+//GASFENOSA
+
+Route::resource('usuariosRrhh', 'UsuariosRrhhController', [
+    'only' => ['index','show','store', 'update']
+]);
+
+//Pruebas de respuetsas indicador
+
+Route::resource('pruebas', 'PruebasController', [
+    'only' => ['index', 'store', 'update', 'destroy','show'],
+]);

@@ -14,6 +14,29 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-md-3 control-label">Tipo indicador</label>
+                    <div class="col-md-9">
+                        <div class="md-radio-inline">
+                            <div class="md-radio">
+                                <input type="radio" id="menor" name="radio1" class="md-radiobtn" value="menor" v-model="nuevoIndicador.limite">
+                                <label for="menor">
+                                    <span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span> Menor que la meta 
+                                </label>
+                            </div>
+                            <div class="md-radio has-warning">
+                                <input type="radio" id="mayor" name="radio1" class="md-radiobtn" value="mayor"  v-model="nuevoIndicador.limite">
+                                <label for="mayor">
+                                    <span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span> Mayor que la meta 
+                                </label>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-md-3 control-label">Meta indicador</label>
                     <div class="col-md-9">
                         <input type="text" placeholder="150" class="form-control" name="metaIndicador" v-model="nuevoIndicador.meta"> 

@@ -9,7 +9,7 @@ class Planes extends Model
     protected $table = "TBL_PlanMejoramiento";
     protected $primaryKey = "PK_id";
     protected $fillable = [
-        'recomendacion', 'umbral', 'FK_IndicadorId'
+        'recomendacion', 'umbral', 'estado','FK_IndicadorId'
     ];
     protected $hidden = [
         'created_at', 'updated_at'
