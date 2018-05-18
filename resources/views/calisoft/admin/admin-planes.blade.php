@@ -19,6 +19,19 @@
                         <input type="text" placeholder="Recomendación del plan a crear" class="form-control" name="recomendacion" v-model="nuevoPlan.recomendacion"> 
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="estado" class="control-label col-xs-4"></label>
+                        <div class="col-xs-4 col-sm-5">
+                            <select-input v-model="nuevoPlan.estado" name="estado" icon="fa fa-list" label="Estado" 
+			                     selected="malo" 
+			                    required>
+                                <option value="malo">Malo</option>
+                                <option value="regular">Regular</option>
+                                <option value="excelente">Excelente</option>
+                           </select-input>
+                        </div> 
+                </div>
+                        
                 <div class="form-actions">
                     <div class="row">
                         <div class="col-md-offset-3 col-md-9">
@@ -33,12 +46,14 @@
                 <thead>
                     <th class="text-center">Recomendación</th>
                     <th class="text-center">Umbral</th>
+                    <th class="text-center">Estados</th>
                     <th class="text-center">Acciones</th>
                 </thead>
                 <tbody>
                     <tr v-for="plan in planes" class="text-center">
                         <td v-text="plan.recomendacion"></td>
                         <td v-text="plan.umbral"></td>
+                        <td v-text="plan.estado"></td>
                         <td>
                             <button class="eliminar-indicador btn btn-danger" title="Eliminar Indicador" @click.prevent="destroy(plan)">
                                 <span class="glyphicon glyphicon-trash"></span>

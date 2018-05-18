@@ -21,6 +21,7 @@
 			required>
             <option value="admin">Administrador</option>
             <option value="evaluator">Evaluador</option>
+            <option value="Funcionario">Funcionario</option>
         </select-input>
 
         
@@ -35,20 +36,21 @@
 import TextInput from "../inputs/text-input";
 import SelectInput from "../inputs/select-input";
 export default {
-	components: { TextInput, SelectInput },
-	data() { 
-		return { user: {} }
-	},
-	methods: {
-		store() {
-            axios.post('/api/usuarios', this.user)
-                .then(response => {
-                    this.$emit('created', response.data);
-                    this.user = {};
-					setTimeout(() => this.errors.clear())
-                })
-                .catch(reason => this.setErrors(reason.response.data.errors));
-        },
-	}
-}
+  components: { TextInput, SelectInput },
+  data() {
+    return { user: {} };
+  },
+  methods: {
+    store() {
+      axios
+        .post("/api/usuarios", this.user)
+        .then(response => {
+          this.$emit("created", response.data);
+          this.user = {};
+          setTimeout(() => this.errors.clear());
+        })
+        .catch(reason => this.setErrors(reason.response.data.errors));
+    }
+  }
+};
 </script>

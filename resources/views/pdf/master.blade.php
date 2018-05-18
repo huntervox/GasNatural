@@ -7,15 +7,14 @@
 <body>
     <header class="row">
         <div class="col-xs-4">
-            <img src="img/LogoUDEC.png" class="img-responsive" alt="UDEC">
+            <img src="img/gas.png" class="img-responsive" alt="GasNatural">
         </div>
         <div class="col-xs-6 col-xs-offset-2">
-            <h3>CALISOFT</h3>
-            <div> Calle 14 con Avenida 15 </div>
-            <div>Universidad de Cundinamarca - Ext. Facatativá </div>
-            <div> (+57 1) 892 0706 | 892 0707 </div>
+            <h3>Gas Natural Fenosa</h3>
+            <div> Carrera 2 Nº 8-40 - Horarios: 8:00 a.m. a 4:00 p.m. </div>
+            <div> Línea de Atención al Cliente: 307 8121  </div>
             <div>
-                <a href="mailto:unicundi@ucundinamarca.edu.co ">unicundi@ucundinamarca.edu.co</a>
+                <a href="mailto:unicundi@ucundinamarca.edu.co ">gasnaturalfeno@gmail.com.co</a>
             </div>
         </div>       
     </header>

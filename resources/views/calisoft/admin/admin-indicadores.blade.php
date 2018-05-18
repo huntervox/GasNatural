@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Tipo indicador</label>
+                    <label class="col-md-3 control-label">Respuestas pósitivas</label>
                     <div class="col-md-9">
                         <div class="md-radio-inline">
                             <div class="md-radio">
@@ -80,6 +80,7 @@
                     <th class="text-center">Nombre</th>
                     <th class="text-center">Tipo</th>
                     <th class="text-center">Meta</th>
+                    <th class="text-center">Resultado +</th>
                     <th class="text-center">Operación</th>
                 </thead>
                 <tbody>
@@ -87,6 +88,7 @@
                         <td v-text="indi.nombreIndicador"></td>
                         <td v-text="indi.tipo"></td>
                         <td v-text="indi.metaIndicador"></td>
+                        <td v-text="'El resultado debe ser '+indi.limite+' a la meta'" ></td>
                         <td>
                             <button class="agregar-preguntas btn btn-success" title="Agregar preguntas" @click.prevent="openPreguntasModal(indi)">
                                 <span class="glyphicon glyphicon-plus"></span>
@@ -115,9 +117,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3 control-label">Respuesta</label>
+                <label  v-if="fillIndicador.tipo == 'cualitativo'" class="col-md-3 control-label">Respuesta</label>
                 <div class="col-md-9">
-
                     <div class="mt-repeater" v-if="fillIndicador.tipo == 'cualitativo'">
                         <div  v-for="(val, index) in valores">
                             <div  class="row">
@@ -125,11 +126,10 @@
                                     <label class="control-label">Nombre</label>
                                     <input type="text" placeholder="Bueno, Malo, Regular, más de 10, etc." class="form-control" v-model="val.respuesta"> 
                                 </div>
-                                <div class="col-md-3">
-                                    <label class="control-label">Valor</label>
-                                    <input type="text" placeholder="3" class="form-control" v-model="val.valor"> 
-                                </div>
-
+                                <div class="col-md-3"> 
+                                    <label class="control-label">Valor</label> 
+                                    <input type="text" placeholder="3" class="form-control" v-model="val.valor">  
+                                </div> 
                                 <div class="col-md-1">
                                     <label class="control-label">&nbsp;</label>
                                     <a href="#" v-on:click.prevent="removeItem(index)" class="btn btn-danger">
@@ -149,7 +149,7 @@
                     <div class="mt-repeater" v-else>
                         <div>
                             <div  class="row">
-                                <div class="col-md-12">
+                                <div v-if="fillIndicador.tipo == 'cualitativo'" class="col-md-12">
                                     <label class="control-label">Valor</label>
                                     <input type="text" placeholder="3" class="form-control" > 
                                 </div>
@@ -175,17 +175,13 @@
                     <table class="table table-hover table-bordered table-condensed">
                         <thead>
                             <th class="text-center">Pregunta</th>
-                            <th class="text-center">Valor</th>
                             <th class="text-center">Respuestas</th>
-                            <th class="text-center">Tipo</th>
                             <th class="text-center">Acciones</th>
                         </thead>
                         <tbody>
                                 <tr v-for="pre in preguntas" class="text-center">
                                 <td v-text="pre.pregunta"></td>
-                                <td v-text="pre.valorPregunta"></td>
                                 <td v-text="pre.respuesta"></td>
-                                <td v-text="pre.tipo"></td>
                                 <td>
                                     <button class="editar-modal btn btn-danger" title="Eliminar pregunta" @click.prevent="destroyPre(pre)">
                                         <span class="glyphicon glyphicon-trash"></span>

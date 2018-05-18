@@ -46,6 +46,7 @@ new Vue({
         PK_id: "",
         recomendacion: "",
         umbral: "",
+        estado: "malo",
         FK_IndicadorId: ""
       };
     },

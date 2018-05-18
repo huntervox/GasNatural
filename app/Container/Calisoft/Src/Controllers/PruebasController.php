@@ -56,7 +56,7 @@ class PruebasController extends Controller
                 ]);
             }
         }
-        
+        return back();
     }
 
     /**
@@ -74,6 +74,7 @@ class PruebasController extends Controller
             ->join('TBL_Usuarios','TBL_Pruebas.FK_UsuarioId', '=', 'TBL_Usuarios.PK_id')
             ->select('TBL_Indicadores.metaIndicador','TBL_Pruebas.respuestaUsuario','TBL_Indicadores.nombreIndicador', 'TBL_Indicadores.limite', 'TBL_Indicadores.PK_id')
             ->where('TBL_Pruebas.FK_UsuarioId','=',$usuario)->get();
+        
         foreach ($consulta as &$valor) {
             $malo = Planes::all()->where('estado',"malo")->where('FK_IndicadorId',$valor->PK_id)->first();
             $valor->malo= $malo->umbral;
@@ -84,21 +85,41 @@ class PruebasController extends Controller
 
             $rUsuario = $valor->respuestaUsuario;
 
+            if($valor->limite == 'mayor'){
+
+                if($rUsuario <= $malo->umbral ){
+                    $valor->plan= Planes::where('FK_IndicadorId',$valor->PK_id)->where('umbral', $malo->umbral)->first()->recomendacion;
+                    $valor->color = "#a80303";
+                };
+
+                if($rUsuario > $malo->umbral and $rUsuario <= $regular->umbral ){
+                    $valor->plan= Planes::where('FK_IndicadorId',$valor->PK_id)->where('umbral', $regular->umbral)->first()->recomendacion;
+                    $valor->color = "#969601";
+                };
+
+                if( $rUsuario > $regular->umbral  ){
+                    $valor->plan= Planes::where('FK_IndicadorId',$valor->PK_id)->where('umbral', $excelente->umbral)->first()->recomendacion;
+                    $valor->color = "#01960b";
+                }
+
+            }else{
+
             
-            if($rUsuario <= $malo->umbral ){
-                $valor->plan= Planes::where('FK_IndicadorId',$valor->PK_id)->where('umbral', $malo->umbral)->first()->recomendacion;
-                $valor->color = "#a80303";
-            };
+                if($rUsuario >= $malo->umbral || $rUsuario > $regular->umbral ){
+                    $valor->plan= Planes::where('FK_IndicadorId',$valor->PK_id)->where('umbral', $malo->umbral)->first()->recomendacion;
+                    $valor->color = "#a80303";
+                };
 
-            if($rUsuario > $malo->umbral and $rUsuario <= $regular->umbral ){
-                $valor->plan= Planes::where('FK_IndicadorId',$valor->PK_id)->where('umbral', $regular->umbral)->first()->recomendacion;
-                $valor->color = "#969601";
-            };
+                if($rUsuario < $malo->umbral and $rUsuario <= $regular->umbral ){
+                    $valor->plan= Planes::where('FK_IndicadorId',$valor->PK_id)->where('umbral', $regular->umbral)->first()->recomendacion;
+                    $valor->color = "#969601";
+                };
 
-            if( $rUsuario > $regular->umbral  ){
-                $valor->plan= Planes::where('FK_IndicadorId',$valor->PK_id)->where('umbral', $excelente->umbral)->first()->recomendacion;
-                $valor->color = "#01960b";
-            }
+                if( $rUsuario < $regular->umbral  ){
+                    $valor->plan= Planes::where('FK_IndicadorId',$valor->PK_id)->where('umbral', $excelente->umbral)->first()->recomendacion;
+                    $valor->color = "#01960b";
+                }
+        }
         }
         return $consulta;
     }

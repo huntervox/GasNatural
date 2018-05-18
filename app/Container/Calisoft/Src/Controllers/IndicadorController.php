@@ -38,11 +38,10 @@ class IndicadorController extends Controller
     {
         $indica = Indicadores::create([
             'nombreIndicador' => $request['nombre'],
+            'limite' => $request['limite'],
             'tipo' => $request['tipo'],
-            'limite' => $request['tipo'],
             'metaIndicador' => $request['meta']
         ]);
-        
         return $indica;
     }
 

@@ -42,6 +42,7 @@ class PlanesController extends Controller
             'recomendacion' => $request['recomendacion'],
             'umbral' => $request['umbral'],
             'FK_IndicadorId' => $request['FK_IndicadorId'],
+            'estado' => $request['estado'],
         ]);
     }
 
